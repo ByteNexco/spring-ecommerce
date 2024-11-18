@@ -14,6 +14,8 @@ import com.curso.ecommerce.model.Producto;
 import com.curso.ecommerce.model.Usuario;
 import com.curso.ecommerce.service.ProductoService;
 
+import ch.qos.logback.core.model.processor.PhaseIndicator;
+
 import org.springframework.ui.Model;
 
 @Controller
@@ -61,6 +63,12 @@ public class ProductoController {
 	@PostMapping("/update")
 	public String update(Producto producto) {
 		productoService.update(producto);
+		return "redirect:/productos";
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable Integer id) {
+		productoService.delete(id);
 		return "redirect:/productos";
 	}
 	
