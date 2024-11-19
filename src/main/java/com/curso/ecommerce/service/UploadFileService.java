@@ -11,11 +11,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class UploadFileService {
-	
 	private String folder="images//";
 	
 	public String saveImage(MultipartFile file) throws IOException {
-		if (file.isEmpty()) {
+		if (!file.isEmpty()) {
 			byte [] bytes=file.getBytes();
 			Path path =Paths.get(folder+file.getOriginalFilename());
 			Files.write(path, bytes);
